@@ -1,0 +1,33 @@
+/* 
+    Created on : Sep 10, 2016, 12:13:51 PM
+    Author     : Jelena
+*/
+body {
+    background-image: url(../slike/pacijent.png);
+    background-size: cover;
+    background-color: azure;
+}
+
+#header {
+    background-color: #009999;
+    border: solid;
+    border-color: #66ff66;
+}
+#naslov {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 40px;
+    font-size: calc(20px + 1.5vw);
+}
+#opcije {
+    width: 50%;
+    min-width: 280px;
+    max-width: 400px;
+    margin-top: 100px;
+}
+.uvuceno {
+    margin: 20px;
+}
+h4 {
+    padding-top: 15px;
+}

@@ -1,0 +1,45 @@
+/* 
+    Created on : Sep 7, 2016, 2:46:49 PM
+    Author     : Sasa.Popovic
+*/
+body {
+    background-image: url(../slike/caduceus.png);
+    background-size: cover;
+    background-color: azure;
+}
+
+#header {
+    background-color: #99ff99;
+    border: solid;
+    border-color: #66ff66;
+}
+#naslov {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 40px;
+    font-size: calc(20px + 1.5vw);
+}
+#unosForma {
+    width: 50%;
+    min-width: 280px;
+    max-width: 400px;
+    margin-top: 100px;
+}
+.btn-xl {
+    padding: 22px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }
+h4 {
+    padding-top: 15px;
+}
+.uvuceno {
+    margin: 20px;
+}
+span {
+    font-size: calc(15px + 1vw);
+}
+

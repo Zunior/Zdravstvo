@@ -1,0 +1,38 @@
+/* 
+    Created on : Sep 7, 2016, 12:20:08 PM
+    Author     : Sasa.Popovic
+*/
+body {
+    background-image: url(slike/glavnapozadina.png);
+    background-color: azure;
+}
+
+#header {
+    background-color: #00ffff;
+    border: solid;
+    border-color: #66ff66;
+}
+#unosForma {
+    width: 50%;
+    min-width: 280px;
+    max-width: 400px;
+    margin-top: 100px;
+}
+#naslov {
+    text-align: left;
+    padding-top: 10px;
+    font-size: 40px;
+    font-size: calc(20px + 1.5vw);
+}
+h4 {
+    padding-top: 15px;
+}
+#donji {
+    margin-bottom: 15px;
+}
+/*#log {
+    display: inline;
+    border: solid;
+    border-color: #ccffcc;
+}*/
+

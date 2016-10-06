@@ -1,0 +1,51 @@
+/* 
+    Created on : Sep 7, 2016, 4:53:11 PM
+    Author     : Sasa.Popovic
+*/
+body {
+    background-image: url(../slike/caduceus.png);
+    background-color: azure;
+}
+
+#header {
+    background-color: #99ff99;
+    border: solid;
+    border-color: #66ff66;
+}
+#naslov {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 40px;
+    font-size: calc(20px + 1.5vw);
+}
+h4 {
+    padding-top: 10px;
+}
+#karton{
+    width: 277px;
+}
+#odabirU, #odabirO {
+    width: 200px;
+}
+#poruka {
+    margin-left: 10px;
+}
+#pacijent, #imedok, #dtm{
+    font-size: 13px;
+}
+textarea {
+   resize: none;
+}
+#upis {
+    float: right;
+}
+#provera {
+    float: left;
+}
+a, a:hover, a:visited, a:link, a:active {
+    text-decoration: none
+}
+.button a {
+   text-decoration: none
+}
+

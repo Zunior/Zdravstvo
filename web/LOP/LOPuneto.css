@@ -1,0 +1,33 @@
+/* 
+    Created on : Sep 8, 2016, 11:47:57 AM
+    Author     : sasha
+*/
+body {
+    background-image: url(../slike/caduceus.png);
+    background-color: azure;
+}
+#header {
+    background-color: #99ff99;
+    border: solid;
+    border-color: #66ff66;
+}
+#naslov {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 40px;
+    font-size: calc(10px + 1.5vw);
+}
+#unosForma {
+    width: 50%;
+    min-width: 280px;
+    max-width: 400px;
+    margin-top: 100px;
+}
+.uvuceno {
+    margin: 20px;
+}
+span {
+    font-size: calc(15px + 1vw);
+}
+
+
