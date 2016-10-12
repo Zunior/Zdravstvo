@@ -13,10 +13,71 @@
         <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <title>Unos korisnika</title>
     </head>
-   <%
-       HttpSession sesija = request.getSession();
-   %> 
+    <%
+        HttpSession sesija = request.getSession();
+    %> 
     <body>
+        <script type="text/javascript">
+//            function proveraJMBG() {
+//                var unos = document.getElementById("jmbg")
+//                var porukaJ = document.getElementById("d")
+//                var dobro = "unos je ispravan"
+//                var nije = "Potrebno je uneti 13 cifara"
+//
+//                if (unos.value) {
+//                    if (unos.value.length == 13 && !isNaN(parseFloat(unos.value))) {
+//                        if (porukaJ.innerText) {
+//                            porukaJ.innerText = dobro
+//                        } else
+//                        if (porukaJ.textContent) {
+//                            porukaJ.textContent = dobro
+//                        }
+//                        porukaJ.style.color = "green"
+//                    } else {
+//                        if (porukaJ.innerText) {
+//                            porukaJ.innerText = nije
+//                        } else
+//                        if (porukaJ.textContent) {
+//                            porukaJ.textContent = nije
+//                        }
+//                        porukaJ.style.color = "red"
+//                    }
+//                }
+//            }
+            function provera(u, p, f){
+                var unos = document.getElementById(u)
+                var poruka = document.getElementById(p)
+                var dobro = "unos je ispravan"
+                var nije
+                if(typeof f==='function' && f==='uslovJMBG')
+                    nije = "Obavezno polje!"
+                else
+                    nije = "Potrebno je uneti 13 cifara"
+                
+                if(unos.value && ((typeof f==='function' && f(unos.value)) || typeof f==='undefined')){
+                        if (poruka.innerText) {
+                            poruka.innerText = dobro
+                        } else
+                        if (poruka.textContent) {
+                            poruka.textContent = dobro
+                        }
+                        poruka.style.color = "green"
+                    } else {
+                        if (poruka.innerText) {
+                            poruka.innerText = nije
+                        } else
+                        if (poruka.textContent) {
+                            poruka.textContent = nije
+                        }
+                        poruka.style.color = "red"
+                    }
+                }
+            function uslovJMBG(u){
+                var un = u
+                if(un.length == 13 && !isNaN(parseFloat(un)))
+                    return true
+            }
+        </script>
         <div class="container-fluid" id="header">
             <div class="row">
                 <div class="col-sm-4">
@@ -31,15 +92,15 @@
             </div>
         </div>
         <form name="Unos" method="post" action="NoviKorisnik">
-            <div class="row">
+            <div class="row" id="prvi">
                 <div class="form-group">
                     <div id="linija1">
                         <label for="ime">Ime:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("a")%></span>
+                        <span id="a"><%=sesija.getAttribute("a")%></span>
                     </div>
-                    <input type="text" class="form-control" id="ime" name="ime" value="<%=sesija.getAttribute("ime")%>">
+                    <input type="text" class="form-control" id="ime" name="ime" value="<%=sesija.getAttribute("ime")%>" onkeyup="provera('ime','a')">
                 </div>
             </div>
             <div class="row">
@@ -48,31 +109,32 @@
                         <label for="prezime">Prezime:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("b")%></span>
+                        <span id="b"><%=sesija.getAttribute("b")%></span>
                     </div>
-                    <input type="text" class="form-control" id="prezime" name="prezime" value="<%=sesija.getAttribute("prezime")%>">
+                    <input type="text" class="form-control" id="prezime" name="prezime" value="<%=sesija.getAttribute("prezime")%>" onkeyup="provera('prezime','b')">
                 </div>
             </div>
             <div class="row">
                 <div id="Pol">
                     <label>Pol:</label>
                     <div class="radio-inline text-right">
-                        <% 
-                            String radio = (String)sesija.getAttribute("pol");
-                            if(radio==null || radio.equals("muski")){
-                                radio="muski";
+                        <%
+                            String radio = (String) sesija.getAttribute("pol");
+                            if (radio == null || radio.equals("muski")) {
+                                radio = "muski";
                                 out.println("<input type='radio' name='pol' id='pol1' value='muski' checked><label><b>muski</b></label>");
-                            }
-                            else
+                            } else {
                                 out.println("<input type='radio' name='pol' id='pol1' value='muski'><label><b>muski</b></label>");
+                            }
                         %>
                     </div>
                     <div class="radio-inline">
-                        <% 
-                            if(radio.equals("zenski"))
+                        <%
+                            if (radio.equals("zenski")) {
                                 out.println("<input type='radio' name='pol' id='pol1' value='zenski' checked><label><b>zenski</b></label>");
-                            else
+                            } else {
                                 out.println("<input type='radio' name='pol' id='pol1' value='zenski'><label><b>zenski</b></label>");
+                            }
                         %>
                     </div>
                 </div>
@@ -83,9 +145,9 @@
                         <label for="lozinka">Lozinka:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("c")%></span>
+                        <span id="c"><%=sesija.getAttribute("c")%></span>
                     </div>
-                    <input type="text" class="form-control" id="lozinka" name="lozinka" value="<%=sesija.getAttribute("lozinka")%>">
+                    <input type="text" class="form-control" id="lozinka" name="lozinka" value="<%=sesija.getAttribute("lozinka")%>" onkeyup="provera('lozinka','c')">
                 </div>
             </div>
             <div class="row">
@@ -94,9 +156,9 @@
                         <label for="jmbg">JMBG:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("d")%></span>
+                        <span id="d"><%=sesija.getAttribute("d")%></span>
                     </div>
-                    <input type="text" class="form-control" id="jmbg" name="jmbg" value="<%=sesija.getAttribute("jmbg")%>">
+                    <input type="text" class="form-control" id="jmbg" name="jmbg" value="<%=sesija.getAttribute("jmbg")%>" onkeyup="provera('jmbg', 'd', uslovJMBG)">
                 </div>
             </div>
             <div class="row">
@@ -105,9 +167,9 @@
                         <label for="inos">Ime nosioca osiguranja:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("e")%></span>
+                        <span id="e"><%=sesija.getAttribute("e")%></span>
                     </div>
-                    <input type="text" class="form-control" id="inos" name="inos" value="<%=sesija.getAttribute("inos")%>">
+                    <input type="text" class="form-control" id="inos" name="inos" value="<%=sesija.getAttribute("inos")%>" onkeyup="provera('inos','e')">
                 </div>
             </div>
             <div class="row">
@@ -116,9 +178,9 @@
                         <label for="snos">Srodstvo sa nosiocem osiguranja:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("f")%></span>
+                        <span id="f"><%=sesija.getAttribute("f")%></span>
                     </div>
-                    <input type="text" class="form-control" id="snos" name="snos" value="<%=sesija.getAttribute("snos")%>">
+                    <input type="text" class="form-control" id="snos" name="snos" value="<%=sesija.getAttribute("snos")%>" onkeyup="provera('snos','f')">
                 </div>
             </div>
             <div class="row">
@@ -127,9 +189,9 @@
                         <label for="adr">Adresa:</label>
                     </div>
                     <div id="linija2">
-                        <span><%=sesija.getAttribute("g")%></span>
+                        <span id="g"><%=sesija.getAttribute("g")%></span>
                     </div>
-                    <input type="text" class="form-control" id="adr" name="adr" value="<%=sesija.getAttribute("adr")%>">
+                    <input type="text" class="form-control" id="adr" name="adr" value="<%=sesija.getAttribute("adr")%>" onkeyup="provera('adr','g')">
                 </div>
             </div>
             <div class="row">
@@ -159,12 +221,12 @@
                     <div style="text-align: left;">
                         <button type="submit" class="btn btn-primary" name="unesi" id="Prosledi">Unesi korisnika</button>
                     </div>
-                <div>
-            </div>
-                    
-        </form>
-    
-        
-       
-    </body>
-</html>
+                    <div>
+                    </div>
+
+                    </form>
+
+
+
+                    </body>
+                    </html>
