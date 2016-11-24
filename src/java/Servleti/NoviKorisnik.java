@@ -32,7 +32,7 @@ public class NoviKorisnik extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         HttpSession sesija = request.getSession();
-        String adresa = "noviKorisnik.jsp";
+        String adresa = "NoviKorisnik/noviKorisnik.jsp";
         
         String a, b, c, d, e, f, g, h, i;
         a=b=c=d=e=f=g=h=i= "Obavezno polje";
@@ -112,24 +112,32 @@ public class NoviKorisnik extends HttpServlet {
         
             Connection con = null;
             Statement st = null;
-
+            boolean success = true;
+            
             try{
                 con = db.getInstance().getConnection();
                 st = con.createStatement();
-                st.executeUpdate("INSERT INTO `pacijent` (`korisnickoIme`, `ime`, `prezime`, "
+                st.executeUpdate("INSERT INTO `pacijent` (`korisnickoIme`, `odobreno`, `ime`, `prezime`, "
                         + "`pol`, `lozinka`, `JMBG`, `imeNosOsig`, `srodSaNos`, `adresa`, `telefon`, `email`, "
-                        + "`idUstanova`) VALUES (NULL, '"+ime+"', '"+prezime+"', '"+pol+"', '"+lozinka+"', "
+                        + "`idUstanova`) VALUES (NULL, 0, '"+ime+"', '"+prezime+"', '"+pol+"', '"+lozinka+"', "
                         + "'"+jmbg+"', '"+inos+"', '"+snos+"', '"+adr+"', '"+telefon+"', '"+email+"', NULL);");
                 st.close();
             }catch(SQLException greska){
+                        success = false;
                         sesija.invalidate();
                         request.setAttribute("porukaogresci", "Greska: " + greska);
                         adresa = "greska.jsp";
-            }finally{
+            }
+            finally{ 
                 db.getInstance().putConnection(con);
+//                adresa = "index.jsp";
+//                sesija.setAttribute("poruka", "Morate sačekati odobrenje. Hvala na registraciji.");
+            }
+            if(success){
                 adresa = "index.jsp";
                 sesija.setAttribute("poruka", "Morate sačekati odobrenje. Hvala na registraciji.");
             }
+
         }
           
         
