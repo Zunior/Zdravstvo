@@ -7,4 +7,4 @@ Kao i svaka druga aplikacija, sve vreme je u fazi dorade, pošto bi uvek moglo n
 (nova funkcionalnost, napredniji izgled, optimalniji kod ...)
 
 U aplikaciji su korišćene sledeće tehnologije:
-Java servleti, jsp, java, javascript, malo Ajax-a, bootstrap, html, css.
+MySQL, java servleti, jsp, java, javascript, malo Ajax-a, bootstrap, html, css.
