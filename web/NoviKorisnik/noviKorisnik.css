@@ -1,0 +1,42 @@
+/* 
+    Created on : Sep 8, 2016, 12:37:47 PM
+    Author     : sasha
+*/
+body {
+    background-image: url(../slike/unos.png);
+    background-size: cover;
+    background-color: azure;
+}
+
+#header {
+    background-color: #ffffcc;
+    border: solid;
+    border-color: #66ff66;
+}
+#naslov {
+    text-align: left;
+    padding-top: 5px;
+    font-size: 40px;
+    font-size: calc(20px + 1.5vw);
+}
+.form-group, #Pol, #sredina {
+    width: 50%;
+    min-width: 190px;
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+}
+#linija1 {
+    display: inline-block;
+}
+#linija2 {
+    display: inline-block;
+    float: right;
+}
+span {
+    color: red;
+}
+#prvi{
+    margin-top: 20px;
+}
+
